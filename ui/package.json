@@ -130,5 +130,9 @@
   "collective": {
     "type": "opencollective",
     "url": "https://opencollective.com/ant-design-pro-vue"
+  },
+  "resolutions": {
+    "webpack": "^4.47.0",
+    "terser-webpack-plugin": "^1.4.6"
   }
 }

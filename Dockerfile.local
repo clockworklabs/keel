@@ -1,5 +1,5 @@
 FROM alpine:latest
-RUN apk --no-cache add ca-certificates
+RUN apk --no-cache add --upgrade ca-certificates
 COPY       keel /bin/keel
 ENTRYPOINT ["/bin/keel"]
 
