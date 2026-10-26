@@ -1,10 +1,15 @@
-FROM golang:1.14.2
+# Go 1.27.3 fixes crypto/x509 verification of compromised eMudhra/emSign certificates.
+FROM golang:1.27.3-bookworm
+
+# Refresh CA trust after the emSign compromise, even if already installed.
+RUN apt-get update && apt-get install --reinstall -y --no-install-recommends ca-certificates && rm -rf /var/lib/apt/lists/*
 COPY . /go/src/github.com/keel-hq/keel
 WORKDIR /go/src/github.com/keel-hq/keel
 RUN make build
 
 FROM debian:latest
-RUN apt-get update && apt-get install -y \
+# Refresh CA trust after the emSign compromise, even if already installed.
+RUN apt-get update && apt-get install --reinstall -y \
   ca-certificates \
   && rm -rf /var/lib/apt/lists/*
 

@@ -1,5 +1,6 @@
 FROM alpine:latest
-RUN apk --no-cache add ca-certificates
+# Refresh system trust to reject the compromised emSign CA.
+RUN apk --no-cache add --upgrade ca-certificates
 COPY       keel /bin/keel
 ENTRYPOINT ["/bin/keel"]
 
