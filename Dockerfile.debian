@@ -1,4 +1,4 @@
-# Go 1.27.3 includes the crypto/x509 certificate-verification fixes.
+# Go 1.27.3 fixes crypto/x509 verification of compromised eMudhra/emSign certificates.
 FROM golang:1.27.3-bookworm
 
 # Refresh CA trust after the emSign compromise, even if already installed.

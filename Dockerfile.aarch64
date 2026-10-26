@@ -1,4 +1,4 @@
-# Replace the EOL base with one that receives CA trust updates.
+# Alpine 3.23 receives CA trust updates for compromised certificate authorities.
 FROM arm64v8/alpine:3.23
 # Refresh system trust to reject the compromised emSign CA.
 RUN apk add --no-cache --upgrade ca-certificates

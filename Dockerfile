@@ -1,4 +1,4 @@
-# Go 1.27.3 includes the crypto/x509 certificate-verification fixes.
+# Go 1.27.3 fixes crypto/x509 verification of compromised eMudhra/emSign certificates.
 FROM golang:1.27.3-bookworm
 
 # Refresh CA trust after the emSign compromise, even if already installed.
@@ -7,7 +7,7 @@ COPY . /go/src/github.com/keel-hq/keel
 WORKDIR /go/src/github.com/keel-hq/keel
 RUN make install
 
-# Node 22.23.4 includes the October security fixes and updated CA roots.
+# Node 22.23.4 distrusts compromised eMudhra/emSign CAs (October 2026).
 FROM node:22.23.4-alpine
 
 WORKDIR /app
